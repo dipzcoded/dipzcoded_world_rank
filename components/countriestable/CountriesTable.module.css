@@ -1,5 +1,6 @@
 .heading {
   display: flex;
+  padding: 20px;
 }
 
 .heading button {
@@ -10,14 +11,20 @@
 }
 
 .heading_name,
-.heading_population {
-  flex: 1;
-  padding: 20px;
+.heading_population,
+.heading_area,
+.heading_gini {
+  flex: 4;
   color: var(--text-secondary);
   font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.heading_flag {
+  flex: 1;
+  margin-right: 16px;
 }
 
 .heading_name {
@@ -36,6 +43,7 @@
   display: flex;
   padding: 20px;
   background-color: var(--bg-color-light);
+  align-items: center;
   text-align: center;
   border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -50,6 +58,7 @@
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .row:hover {
@@ -62,10 +71,37 @@
 }
 
 .name,
-.population {
-  flex: 1;
+.population,
+.area,
+.gini {
+  flex: 4;
 }
 
 .name {
   text-align: left;
+}
+
+.flag {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.flag img {
+  width: 100%;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+@media screen and (max-width: 728px) {
+  .area,
+  .gini,
+  .flag,
+  .heading_area,
+  .heading_gini,
+  .heading_flag {
+    display: none;
+  }
 }
