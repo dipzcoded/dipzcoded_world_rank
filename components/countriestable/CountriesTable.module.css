@@ -95,6 +95,48 @@
   -o-border-radius: 2px;
 }
 
+.pagination {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.pagination_item {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
+
+.pagination_item:not(:last-of-type) {
+  margin-right: 15px;
+}
+
+.pagination_item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.pagination_item.active {
+  background-color: #21b6b7;
+  padding: 8px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
 @media screen and (max-width: 728px) {
   .area,
   .gini,

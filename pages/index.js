@@ -30,7 +30,7 @@ export default function Home({ countries }) {
         </div>
       </div>
 
-      <CountriesTable countries={filteredCountries} />
+      <CountriesTable countries={filteredCountries} keyword={keyword} />
     </Layout>
   );
 }

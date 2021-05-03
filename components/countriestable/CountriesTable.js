@@ -6,16 +6,26 @@ import {
 import styles from "./CountriesTable.module.css";
 import Link from "next/link";
 
-const orderBy = (countries, direction, value) => {
-  if (!direction) {
+const orderBy = (countries, direction, value, page, resPerPage, keyword) => {
+  const pageOn = (page - 1) * resPerPage;
+  const resPageOn = resPerPage * page;
+
+  if (keyword) {
     return [...countries];
   }
+  if (!direction) {
+    return [...countries].slice(pageOn, resPageOn);
+  }
   if (direction === "asc") {
-    return [...countries].sort((a, b) => (a[value] > b[value] ? 1 : -1));
+    return [...countries]
+      .slice(pageOn, resPageOn)
+      .sort((a, b) => (a[value] > b[value] ? 1 : -1));
   }
 
   if (direction === "desc") {
-    return [...countries].sort((a, b) => (a[value] > b[value] ? -1 : 1));
+    return [...countries]
+      .slice(pageOn, resPageOn)
+      .sort((a, b) => (a[value] > b[value] ? -1 : 1));
   }
 };
 
@@ -36,10 +46,21 @@ const SortArrow = ({ direction }) => {
   }
 };
 
-const CountriesTable = ({ countries }) => {
+const CountriesTable = ({ countries, keyword }) => {
   const [direction, setDirection] = useState();
   const [value, setValue] = useState();
-  const orderedCountries = orderBy(countries, direction, value);
+  const [page, setPage] = useState(1);
+  const resPerPage = 50;
+  const pages = Math.ceil(countries.length / resPerPage);
+
+  const orderedCountries = orderBy(
+    countries,
+    direction,
+    value,
+    page,
+    resPerPage,
+    keyword
+  );
 
   const switchDirection = () => {
     if (!direction) {
@@ -55,6 +76,8 @@ const CountriesTable = ({ countries }) => {
     switchDirection();
     setValue(value);
   };
+
+  console.log(page);
   return (
     <div>
       <div className={styles.heading}>
@@ -110,6 +133,22 @@ const CountriesTable = ({ countries }) => {
           </div>
         </Link>
       ))}
+
+      <div className={styles.pagination}>
+        {!keyword &&
+          [...new Array(pages)].map((el, index) => (
+            <button
+              className={`${styles.pagination_item} ${
+                page === index + 1 && styles.active
+              }`}
+              type="button"
+              value={index + 1}
+              onClick={(e) => setPage(Number(e.target.value))}
+            >
+              {index + 1}
+            </button>
+          ))}
+      </div>
     </div>
   );
 };
