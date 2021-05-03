@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color-dark);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  padding-left: 16px;
+  color: var(--text-secondary);
+}
+
+.input {
+  border: none;
+  outline: 0;
+  background-color: transparent;
+  padding: 16px;
+  flex: 1;
+  height: 100%;
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+}
