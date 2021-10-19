@@ -4,9 +4,7 @@ import Layout from "../../components/layout/Layout";
 import styles from "./Country.module.css";
 
 const getCountryInfo = async (id) => {
-  const { data } = await axios.get(
-    `https://restcountries.eu/rest/v2/alpha/${id}`
-  );
+  const { data } = await axios.get(`https://restcountries.com/v2/alpha/${id}`);
   return data;
 };
 
@@ -109,7 +107,7 @@ export default Country;
 
 export const getStaticPaths = async () => {
   const { data: countries } = await axios.get(
-    "https://restcountries.eu/rest/v2/all"
+    "https://restcountries.com/v2/all"
   );
   const paths = countries.map((el) => ({
     params: { id: el.alpha3Code },
@@ -120,6 +118,10 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
+
+// export  function getServerSideProps = async ({params}) => {
+//   const res = await axios.get("")
+// }
 
 export async function getStaticProps({ params }) {
   const countryData = await getCountryInfo(params.id);

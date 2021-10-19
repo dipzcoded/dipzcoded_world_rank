@@ -36,7 +36,7 @@ export default function Home({ countries }) {
 }
 
 export async function getStaticProps(context) {
-  const { data } = await axios.get("https://restcountries.eu/rest/v2/all");
+  const { data } = await axios.get("https://restcountries.com/v2/all");
 
   return {
     props: { countries: data }, // will be passed to the page component as props
