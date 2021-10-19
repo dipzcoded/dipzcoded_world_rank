@@ -23,7 +23,7 @@ const Country = ({ country }) => {
   }, []);
 
   return (
-    <Layout title={country.name}>
+    <Layout title={country?.name}>
       <div className={styles.container}>
         <div className={styles.container_left}>
           <div className={styles.overview_panel}>
@@ -58,14 +58,14 @@ const Country = ({ country }) => {
             <div className={styles.details_panel_row}>
               <div className={styles.details_panel_label}>Languages</div>
               <div className={styles.details_panel_value}>
-                {country?.languages.map(({ name }) => name).join(", ")}
+                {country?.languages?.map(({ name }) => name).join(", ")}
               </div>
             </div>
 
             <div className={styles.details_panel_row}>
               <div className={styles.details_panel_label}>Currency</div>
               <div className={styles.details_panel_value}>
-                {country?.currencies.map(({ name }) => name).join(", ")}
+                {country?.currencies?.map(({ name }) => name).join(", ")}
               </div>
             </div>
 
